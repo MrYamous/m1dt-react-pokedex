@@ -28,6 +28,8 @@ class Pokemon extends Component {
     async componentDidMount() {
         try {
             const res = await Axios.get('https://pokeapi.co/api/v2/pokemon/venusaur');
+            // TODO fix this
+            // const res = await Axios.get('https://pokeapi.co/api/v2/pokemon/${this.props.match.params.pokemon}');
             const data = res.data;
             this.setState({
                 isLoaded: true,
