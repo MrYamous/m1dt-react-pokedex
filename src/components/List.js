@@ -1,23 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Item from "./Item";
 import Loader from "./Loader";
 import Filter from "./Filter";
 import Axios from 'axios';
 
-class List extends React.Component {
+class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false,
-            poke: ""
+            poke: []
         };
     }
 
     async componentDidMount() {
         try {
-            const res = await Axios.get('https://pokeapi.co/api/v2/pokemon');
-            const data = res.data;
+            const res = await Axios.get('https://pokeapi.co/api/v2/pokemon?limit=150');
+            const data = res.data['results'];
             this.setState({
                 isLoaded: true,
                 poke: data
@@ -40,9 +40,9 @@ class List extends React.Component {
             return (
                 <div>
                     <Filter/>
-                    {poke.map(function (item, i) {
+                    {poke.map(function (pokemon, i) {
                         return (
-                            <Item key={i} {...item}/>
+                            <Item key={i} {...pokemon} url={pokemon.url}/>
                         )
                     })}
                 </div>
