@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import List from './components/List';
 import Pokemon from './components/Pokemon';
+import Starter from './components/starter/Starter';
 import { BrowserRouter as Router, Route, Switch  } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -15,7 +16,8 @@ export default function Routing() {
                 </Helmet>
             <Router>
                 <Switch>
-                    <Route exact path="/" component={List} />
+                    <Route exact path="/list" component={List} />
+                    <Route exact path="/" component={Starter} />
                     <Route path="/:pokemon" component={Pokemon} />
                 </Switch>
             </Router>

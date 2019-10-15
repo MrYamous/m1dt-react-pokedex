@@ -21,7 +21,7 @@ class Pokemon extends Component {
             def: "",
             attack: "",
             hp: "",
-            type: "",
+            type: ""
         };
     }
 
@@ -43,7 +43,7 @@ class Pokemon extends Component {
                 def: data.stats[3].base_stat,
                 attack: data.stats[4].base_stat,
                 hp: data.stats[5].base_stat,
-                type: data.types[0].type.name
+                type: data.types.filter((f) => f.slot === 1)[0].type.name
 
             })
         } catch (e) {
@@ -65,7 +65,7 @@ class Pokemon extends Component {
                 <div className="container">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="/">Pokemons</a></li>
+                            <li className="breadcrumb-item"><a href="/list">Pokemons</a></li>
                             <li className="breadcrumb-item active" aria-current="page">{name}</li>
                         </ol>
                     </nav>

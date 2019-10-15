@@ -12,7 +12,7 @@ class List extends Component {
             isLoaded: false,
             poke: [],
             pokesearch: [],
-            value: ""
+            value: "",
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -58,7 +58,7 @@ class List extends Component {
                         </div>
                         {poke.map(function (pokemon, i) {
                             return (
-                                <Item key={pokemon.name} {...pokemon} url={pokemon.url}/>
+                                <Item key={pokemon.name} {...pokemon} url={pokemon.url} />
                             )
                         })}
                     </div>

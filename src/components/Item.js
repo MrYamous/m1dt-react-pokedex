@@ -31,7 +31,7 @@ class Item extends Component {
                             <h2>{this.state.name}</h2>
                         </div>
                         <div>
-                            <img src={this.state.img}/>
+                            <img src={this.state.img} alt={this.state.name}/>
                         </div>
                     </div>
                 </Link>
