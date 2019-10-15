@@ -12,8 +12,7 @@
 /build
 
 # IDE
-.DS_Store
-.idea
+.idea/workspace.xml
 
 # misc
 .DS_Store
