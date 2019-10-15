@@ -11,8 +11,12 @@ class Filter extends Component {
         return  (
             <div>
                 <form onSubmit={e => this.props.handleSubmit(e) }>
-                    <input type="text" onChange={this.props.handleChange} />
-                    <input type="submit" value="Rechercher" />
+                    <div className="input-group mb-3">
+                            <input type="text" onChange={this.props.handleChange} className="form-control"/>
+                        <div className="input-group-append">
+                            <input type="submit" value="Rechercher" className="btn btn-outline-secondary"/>
+                        </div>
+                    </div>
                 </form>
             </div>
     )

@@ -27,9 +27,7 @@ class Pokemon extends Component {
 
     async componentDidMount() {
         try {
-            const res = await Axios.get('https://pokeapi.co/api/v2/pokemon/venusaur');
-            // TODO fix this
-            // const res = await Axios.get('https://pokeapi.co/api/v2/pokemon/${this.props.match.params.pokemon}');
+            const res = await Axios.get(`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.pokemon}`);
             const data = res.data;
             this.setState({
                 isLoaded: true,
@@ -64,19 +62,31 @@ class Pokemon extends Component {
             return <Loader/>;
         } else {
             return (
-                <div className={type}>
-                    <h2>{name}</h2>
-                    <img src={img}/>
-                    <p>Poids : {weight}</p>
-                    <p>Taille : {size}</p>
-                    <p>Capacité 1 : {ability1}</p>
-                    <p>Capacité 2 : {ability2}</p>
-                    <p>Vitesse : {speed}</p>
-                    <p>Défense spéciale : {specialdef}</p>
-                    <p>Attaque spéciale : {specialatt}</p>
-                    <p>Défense  : {def}</p>
-                    <p>Attaque : {attack}</p>
-                    <p>PV : {hp}</p>
+                <div className="container">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="/">Pokemons</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">{name}</li>
+                        </ol>
+                    </nav>
+                    <div className="row">
+                        <div className="offset-md-3 col-md-6 offset-lg-3 col-lg-6 text-center">
+                            <div className={type}>
+                                <h2>{name}</h2>
+                                <img src={img} alt={name}/>
+                                <p>Poids : {weight}</p>
+                                <p>Taille : {size}</p>
+                                <p>Capacité 1 : {ability1}</p>
+                                <p>Capacité 2 : {ability2}</p>
+                                <p>Vitesse : {speed}</p>
+                                <p>Défense spéciale : {specialdef}</p>
+                                <p>Attaque spéciale : {specialatt}</p>
+                                <p>Défense  : {def}</p>
+                                <p>Attaque : {attack}</p>
+                                <p>PV : {hp}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }

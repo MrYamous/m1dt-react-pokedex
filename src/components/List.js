@@ -10,8 +10,11 @@ class List extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            poke: []
+            poke: [],
+            pokesearch: [],
+            value: ""
         };
+        this.handleChange = this.handleChange.bind(this);
     }
 
     async componentDidMount() {
@@ -20,7 +23,8 @@ class List extends Component {
             const data = res.data['results'];
             this.setState({
                 isLoaded: true,
-                poke: data
+                poke: data,
+                pokesearch: data
             })
         } catch (e) {
             this.setState({
@@ -28,6 +32,15 @@ class List extends Component {
                 error: e
             })
         }
+    }
+
+    handleChange(e) {
+        this.setState({
+            value: e.currentTarget.value,
+            poke: this.state.pokesearch.filter(pokesearch =>
+                pokesearch.name.toLowerCase().includes(e.currentTarget.value.toLowerCase())
+            ),
+        });
     }
 
     render() {
@@ -38,13 +51,17 @@ class List extends Component {
             return <Loader/>;
         } else {
             return (
-                <div>
-                    <Filter/>
-                    {poke.map(function (pokemon, i) {
-                        return (
-                            <Item key={i} {...pokemon} url={pokemon.url}/>
-                        )
-                    })}
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 col-lg-12 text-center">
+                        <Filter value={this.state.value} handleChange={this.handleChange}/>
+                        </div>
+                        {poke.map(function (pokemon, i) {
+                            return (
+                                <Item key={pokemon.name} {...pokemon} url={pokemon.url}/>
+                            )
+                        })}
+                    </div>
                 </div>
             )
         }

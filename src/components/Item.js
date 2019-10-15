@@ -24,7 +24,7 @@ class Item extends Component {
 
     render(){
         return (
-            <div>
+            <div className="col-md-4 col-lg-4 card text-center">
                 <Link to={`/${this.state.name}`}>
                     <div>
                         <div>
